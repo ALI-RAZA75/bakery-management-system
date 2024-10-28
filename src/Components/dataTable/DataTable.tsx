@@ -1,42 +1,43 @@
 import { DataGrid, GridColDef, GridToolbar } from '@mui/x-data-grid';
 import './Datatable.scss';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 type Props = {
   columns: GridColDef[];
   rows: { id: number; [key: string]: any }[];
   slug: string;
+  onEdit: (id: number) => void;
+  onDelete: (id: number) => void;
 };
 
-function DataTable({ columns, rows, slug }: Props) {
+function DataTable({ columns, rows, onEdit, onDelete }: Props) {
 
-  const handleDelete = (id: number) => {
-    console.log(id + " has been deleted");
-  };
-
-  const actionColumns: GridColDef[] = [{
-    field: 'action',
-    headerName: 'Action',
-    width: 200,
-    renderCell: (params) => {
-      return (
-        <div className="action">
-          <Link to={`/${slug}/${params.row.id}`}>
-            <img src="/view.svg" alt="View" />
-          </Link>
-          <div className="delete" onClick={() => handleDelete(params.row.id)}>
-            <img src="/delete.svg" alt="Delete" />
-          </div>
-        </div>
-      );
-    }
-  }];
+  // const actionColumns: GridColDef[] = [{
+  //   field: 'action',
+  //   headerName: 'Action',
+  //   width: 200,
+  //   renderCell: (params) => {
+  //     return (
+  //       <div className="action">
+  //         {/* <Link to={`/${slug}/${params.row.id}`}>
+  //           <img src="/view.svg" alt="View" />
+  //         </Link> */}
+  //         <div className="edit" onClick={() => onEdit(params.row.id)}>
+  //           <img src="/view.svg" alt="Edit" />
+  //         </div>
+  //         <div className="delete" onClick={() => onDelete(params.row.id)}>
+  //           <img src="/delete.svg" alt="Delete" />
+  //         </div>
+  //       </div>
+  //     );
+  //   }
+  // }];
 
   return (
     <div className='dataTable'>
       <DataGrid className='DataGrid'
         rows={rows}
-        columns={[...columns, ...actionColumns]}
+        columns={[...columns]}
         initialState={{
           pagination: {
             paginationModel: {
@@ -52,7 +53,7 @@ function DataTable({ columns, rows, slug }: Props) {
           }
         }}
         pageSizeOptions={[5, 10]}
-        checkboxSelection
+// checkboxSelection
         disableRowSelectionOnClick
         disableColumnFilter
         disableDensitySelector

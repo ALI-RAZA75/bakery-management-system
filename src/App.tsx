@@ -11,6 +11,12 @@ import Footer from "./Components/Footer/Footer";
 import Menu from "./Components/Menu/Menu";
 import Login from "./Pages/Login/Login";
 import './styles/global.scss'
+import UserRoles from "./Pages/UserRoles/UserRoles";
+import Categories from "./Pages/Categories/Categories";
+import SupplierDetails from "./Pages/SupplierDetails/SupplierDetails";
+import Demands from "./Pages/Demands/Demands";
+import Receiveds from "./Pages/Received/Receiveds";
+import Issuance from "./Pages/Issuance/Issuance";
 function App() {
 
   const Layout = ()=> {
@@ -44,8 +50,32 @@ function App() {
           element:<User/>
         },
         {
-          path: "/Products",
+          path: "/user-roles",
+          element:<UserRoles/>
+        }
+        ,{
+          path: "/categories",
+          element:<Categories/>
+        },
+        {
+          path: "/supplier-details",
+          element:<SupplierDetails/>
+        },
+        {
+          path:"/products",
           element:<Products/>
+        },
+        {
+          path:"/demands",
+          element:<Demands/>
+        },
+        {
+          path:"/Receiveds",
+          element:<Receiveds/>
+        },
+        {
+          path:"/Issuance",
+          element:<Issuance/>
         }
       ]
     },
